@@ -8,7 +8,7 @@ conf.sniff_promisc=True
 
 tracefile = ''
 device = ''
-packets = {}
+packets = []
 bpf_filter = 'udp port 53'
 sniff_office = False
 
