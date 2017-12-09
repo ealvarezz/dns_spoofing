@@ -44,4 +44,32 @@ Sent 1 packets.
 It took  -0.000765800476074
 Sent: IP / UDP / DNS Ans "10.1.188.47"
 
+dnsdetect examples:
+
+root@ubuntu:~/SBU/dns_spoofing# python dnsdetect.py 
+Sniffing on specified interface
+default device: ens33
+Expression:  port 53 and udp
+2017-12-08 23:40	DNS poisoning attempt
+TXID: 814   request: www.bankofamerica.com.
+Answer1: wwwui.ecglb.bac.com.
+Answer2: 10.1.188.47
+
+
+2017-12-08 23:40	DNS poisoning attempt
+TXID: 814   request: www.bankofamerica.com.
+Answer1: 10.1.188.47
+Answer2: wwwui.ecglb.bac.com.
+
+
+2017-12-08 23:40	DNS poisoning attempt
+TXID: 28577   request: www.youtube.com.
+Answer1: youtube-ui.l.google.com.
+Answer2: 10.1.188.47
+
+
+2017-12-08 23:40	DNS poisoning attempt
+TXID: 28577   request: www.youtube.com.
+Answer1: 10.1.188.47
+Answer2: youtube-ui.l.google.com.
 
