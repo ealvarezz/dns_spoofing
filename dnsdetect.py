@@ -67,7 +67,10 @@ def dns_detect(pkt):
         if len(packets) > 0:
             for packet in packets:
                 if malicious_packet(pkt, packet):
-                    print "You just got hacked!!!"
+                    print time.strftime("%Y-%m-%d %H:%M") + '\tDNS poisoning attempt'
+		    print 'TXID: ' + str(pkt[DNS].id)+ '   request: '+pkt.getlayer(DNS).qd.qname
+		    print 'Answer1: ' + str(pkt[DNSRR].rdata)
+                    print 'Answer2: ' + str(packet[DNSRR].rdata) + '\n\n'
         
         if len(packets) > 2500:
             packets.clear();
