@@ -1,0 +1,20 @@
+Edwin Alvarez (109448839)
+
+HOW TO COMPILE AND RUN:
+
+To run dnsinject: (sudo) python dnsinject.py <arguments>
+			   (sudo) python dnsdetect.py <arguments>
+
+I used scapy for this so it should be installed (ex. pip install scapy)
+Used python 2.7.14
+Other python packges: netinfaces, argparse, timeit
+
+OS, LANGUAGE AND VERSIONS:
+
+For injecting I used Mac OS 10.11.6 El Capitan and for detecting I used Ubuntu MATE 16.04 with VMWare as a guest machine.
+
+GENERAL DESIGN & TAKING CARE OF FALSE POSITIVES:
+
+dnsinject: Using the scapy I was able to easily sniff packages and check if they were DNS requests. I created a copy of the dns package but swaped the src and dest IP addresses and port number. I also had to copy the checksum to make sure it worked and last but not least I sent an IP address as the response. 
+
+dnsdetect: All I did was keep a buffer of 2500 packets up each time I read a DNS I would compare it to the packets in the buffer. The way I compared was, if anything but the response and payload matched then that means that there was some sort of attempt to spoof a dns request. This is an easy way to avoid false positives since if two packet are completely identical then that means that the dns server decided to send two legitimate responses.

