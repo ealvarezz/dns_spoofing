@@ -63,7 +63,7 @@ def malicious_packet(packet1, packet2):
 # Were made with different responses
 def dns_detect(pkt):
 
-    if pkt.haslayer(DNSQR):
+    if pkt.haslayer(DNSRR):
         if len(packets) > 0:
             for packet in packets:
                 if malicious_packet(pkt, packet):
